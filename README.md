@@ -14,3 +14,7 @@ To transform the product tables, we will query the source table from postgres in
 2. rename the columns where the column names contain English. We have finished all the transformations, so let’s save this to a staging table using the `to_sql()` function.
 3. perform similar operations on Product Subcategory and Product Category tables. Drop the unwanted columns and rename a few columns,
 4.  save the updates to tables with “src” prefix.
+
+with prdProduct_model.py, to build the final product model, we will query all three tables. There is data type mismatch so will convert the column to integer.
+
+Then, we merge the three DataFrames into a single dataframe and save it into a table with the “prd” prefix.
