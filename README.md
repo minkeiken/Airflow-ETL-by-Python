@@ -18,3 +18,7 @@ To transform the product tables, we will query the source table from postgres in
 with prdProduct_model.py, to build the final product model, we will query all three tables. There is data type mismatch so will convert the column to integer.
 
 Then, we merge the three DataFrames into a single dataframe and save it into a table with the “prd” prefix.
+
+finally , with dag_task_grp.py, to declare a DAG and define some properties. First it is the schedule interval, we will set this to nine AM, with a Cron expression. Then we define a start date, when this schedule should start, and we will set the catchup to false. Last, we set a tag for this DAG. Tag helps you group together multiple DAGs, and you can use it to filter DAGs from the UI.
+
+Under Dag we define TaskGroups to call our tasks. We group the related tasks under one group. We set the dependency between tasks and the define the order in which they should run. We will see the visual representation in the UI. Finally, We define the order of the TaskGroups and in which order Airflow should execute them. Once saved the completed DAG will appear in the Airflow UI. You will have to enable it to take effect. This is how we automate our ETL pipeline with Airflow.
